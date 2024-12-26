@@ -10,24 +10,21 @@ class Solution(object):
         
         for i in prices:
             if i < local_min :
-                local_min = i
+                local_min = i            
+
+        l,r = 0, 1 #left = Buying, right = Selling
+        max_pft = 0
+
+        while r < len(prices):
+            if prices[l] < prices[r] :
+                pft = prices[r] - prices[l]
+                max_pft = max(max_pft,pft)
+            else:
+                l = r
             
+            r = r+1
 
-
-
-        # l,r = 0, 1 #left = Buying, right = Selling
-        # max_pft = 0
-
-        # while r < len(prices):
-        #     if prices[l] < prices[r] :
-        #         pft = prices[r] - prices[l]
-        #         max_pft = max(max_pft,pft)
-        #     else:
-        #         l = r
-            
-        #     r = r+1
-
-        # return max_pft
+        return max_pft
     
 def main():
     ans = Solution()
